@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend the user preferences form to add Chatter settings -->
+    <record id="view_users_form_flexible_chatter" model="ir.ui.view">
+        <field name="name">res.users.form.flexible.chatter</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Chatter" name="chatter_preferences">
+                    <group>
+                        <group string="Chatter Layout">
+                            <field name="chatter_position" widget="radio"/>
+                        </group>
+                        <group string="Advanced">
+                            <field name="chatter_width"/>
+                            <field name="chatter_collapsed"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle"/> Don't forget to reload the webpage for the changes to take effect.
+                    </div>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!-- Also add to the user preferences dialog (simplified) -->
+    <record id="view_users_form_simple_flexible_chatter" model="ir.ui.view">
+        <field name="name">res.users.preferences.form.flexible.chatter</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Chatter" name="chatter_preferences_simple">
+                    <group>
+                        <group string="Chatter Position">
+                            <field name="chatter_position" widget="radio"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle"/> Don't forget to reload the webpage for the changes to take effect.
+                    </div>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
