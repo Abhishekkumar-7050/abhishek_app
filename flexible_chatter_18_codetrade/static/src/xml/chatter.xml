@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o-mail-Chatter')]" position="attributes">
+            <attribute name="t-on-mouseenter">flexOnMouseEnter</attribute>
+            <attribute name="t-on-mouseleave">flexOnMouseLeave</attribute>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o-mail-Chatter')]" position="inside">
+            <!-- Resizer Handle (Only for side mode) -->
+            <div t-if="state?.aside and !flexState.collapsed"
+                 class="o_flexible_chatter_resizer"
+                 t-on-mousedown.stop.prevent="flexOnResizeStart"/>
+
+            <!-- Toggle button: Show/Hide chatter -->
+            <!-- Visible on hover OR when chatter is hidden -->
+            <button t-if="flexState.showToggle or flexState.collapsed"
+                    class="o_flexible_chatter_toggle_btn"
+                    t-att-class="{'o_flex_btn_collapsed': flexState.collapsed}"
+                    t-on-click.stop="flexToggleChatter"
+                    t-att-title="flexState.collapsed ? 'Show Chatter' : 'Hide Chatter'">
+                <i t-attf-class="fa {{ flexState.collapsed ? 'fa-comments' : (state?.aside ? 'fa-chevron-right' : 'fa-chevron-down') }}"/>
+            </button>
+        </xpath>
+    </t>
+</templates>

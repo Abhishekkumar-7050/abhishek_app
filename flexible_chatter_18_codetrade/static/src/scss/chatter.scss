@@ -1,0 +1,178 @@
+.o_flexible_chatter_resizer {
+    position: absolute;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: transparent;
+    cursor: col-resize;
+    z-index: 10;
+    transition: background 0.2s;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 3px;
+        height: 40px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover {
+        background: rgba(0, 129, 132, 0.1);
+    }
+}
+
+.o-mail-Chatter {
+    position: relative;
+}
+
+.o-mail-Chatter.o_flex_collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+
+    >*:not(.o_flexible_chatter_toggle_btn) {
+        display: none !important;
+    }
+}
+
+.o_flexible_chatter_toggle_btn {
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.2s;
+    color: #495057;
+
+    &:hover {
+        background: #008184;
+        color: #fff;
+        border-color: #008184;
+    }
+
+    &.o_flex_btn_collapsed {
+        left: auto;
+        right: 24px;
+        bottom: 24px;
+        top: auto;
+        position: fixed;
+        background: #008184;
+        color: #fff;
+        width: 48px;
+        height: 48px;
+        border: none;
+        box-shadow: 0 4px 16px rgba(0, 129, 132, 0.4);
+        transform: none;
+    }
+}
+
+
+.o_form_view:has(.o-mail-Form-chatter:not(.o-aside)):not(.o_res_config_settings) {
+    flex-direction: column !important;
+    display: flex !important;
+
+    .o_form_view_container {
+        width: 100% !important;
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: auto !important;
+    }
+
+    .o_form_renderer {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        align-items: center !important;
+        padding-bottom: 50px !important;
+        max-width: none !important;
+    }
+
+    .o_form_sheet_bg {
+        width: 100% !important;
+        max-width: none !important;
+        flex: 0 0 auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+
+        .o_form_sheet {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            max-width: none !important;
+            width: 100% !important;
+        }
+    }
+
+    .o-mail-Form-chatter {
+        width: 100% !important;
+        max-width: none !important;
+        flex: 0 0 auto !important;
+        margin: 2rem 0 !important;
+        padding: 0 16px !important;
+
+        .o-mail-Chatter {
+            width: 100% !important;
+            max-width: none !important;
+            background: transparent !important;
+        }
+    }
+}
+
+
+.o_form_view:has(.o-mail-Form-chatter.o-aside):not(.o_res_config_settings) {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+
+    .o_form_view_container {
+        width: 1px;
+        flex: 1 1 auto;
+    }
+
+    .o_form_renderer {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+    }
+
+    .o_form_sheet_bg {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        overflow: auto !important;
+    }
+
+    .o-mail-Form-chatter.o-aside {
+        flex: 0 0 auto !important;
+        overflow: hidden;
+        border-left: 1px solid #dee2e6;
+    }
+}
+
+.o-mail-Form-chatter.o-isInFormSheetBg {
+    width: auto !important;
+    max-width: none !important;
+    margin-top: 0 !important;
+}
