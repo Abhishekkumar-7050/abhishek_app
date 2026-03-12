@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_move_form_stock_validation" model="ir.ui.view">
+            <field name="name">account.move.form.stock.validation</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_stock_picking" type="object" class="oe_stat_button" icon="fa-truck" invisible="picking_count == 0">
+                        <field name="picking_count" widget="statinfo" string="Delivery"/>
+                    </button>
+                </xpath>
+                <xpath expr="//header" position="after">
+                    <div class="alert alert-info py-2 mb-0" role="alert" invisible="auto_picking == False or state != 'draft'">
+                        <i class="fa fa-info-circle me-1"/> A stock picking will be created automatically when this invoice is confirmed.
+                    </div>
+                </xpath>
+                <xpath expr="//page[@name='other_info']" position="inside">
+                    <group string="Inventory Automation" name="inventory_automation">
+                        <field name="auto_picking" widget="boolean_toggle"/>
+                        <field name="warehouse_id" invisible="not auto_picking" required="auto_picking"/>
+                        <field name="picking_type_id" invisible="not auto_picking" required="auto_picking"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

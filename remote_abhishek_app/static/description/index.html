@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice with Stock Validation | Odoo 18</title>
+</head>
+
+<body style="margin:0; padding:0; font-family:'Segoe UI',system-ui,sans-serif; background:#EEF2F7; color:#1e293b;">
+
+    <section class="oe_container" style="background:linear-gradient(257deg,rgba(252,252,254,.6) 3%,rgba(226,240,255,.6) 95%); border-radius:12px; border:2px solid #E0E8F0; padding:30px 40px 35px; margin-bottom:20px;">
+        <div class="text-center mb-3">
+            <img src="./top-header.png" alt="CodeTrade Header" style="width:100%; max-width:780px;">
+        </div>
+        <div class="text-center mb-3">
+            <span style="display:inline-block; background:#E3EDF8; border:1px solid #C5D9EF; padding:8px 22px; border-radius:50px; font-size:13px; font-weight:600; color:#3A5A7C; letter-spacing:.8px; text-transform:uppercase;">ODOO 18 - INVENTORY ADJUSTMENT</span>
+        </div>
+        <div class="text-center mb-3">
+            <h1 style="font-size:42px; font-weight:700; color:#012B46; line-height:1.25; margin:0;">
+                Invoice with Stock Validation
+            </h1>
+        </div>
+        <div style="background:linear-gradient(90deg,#004B97 0%,#0A1B2C 100%); border-radius:12px; padding:18px 30px; display:flex; align-items:center; justify-content:space-between; gap:20px; box-shadow:0 4px 16px rgba(0,75,151,.3); margin-bottom:20px;">
+            <h4 style="font-size:19px; font-weight:500; color:#fff; margin:0; line-height:1.5; max-width:520px;">
+                Adjustment of stock pickings the moment invoices, bills, and refunds are validated.
+            </h4>
+            <img src="./badge.png" alt="badge" style="height:90px; flex-shrink:0;">
+        </div>
+        <div style="display:flex; align-items:center; gap:32px; flex-wrap:wrap;">
+            <span style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:#0F172B;">
+                <span style="width:22px; height:22px; background:#0d5aa7; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:700;">&#10003;</span>
+                Community
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:#0F172B;">
+                <span style="width:22px; height:22px; background:#0d5aa7; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:700;">&#10003;</span>
+                Enterprise
+            </span>
+            <span style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:#0F172B;">
+                <span style="width:22px; height:22px; background:#0d5aa7; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:700;">&#10003;</span>
+                Odoo.sh
+            </span>
+        </div>
+    </section>
+
+    <section class="oe_container" style="background:linear-gradient(257deg,rgba(252,252,254,.6) 3%,rgba(226,240,255,.6) 95%); border-radius:12px; border:2px solid #E0E8F0; padding:36px 40px; margin-bottom:20px; text-align:center;">
+        <h2 style="font-size:36px; font-weight:700; color:#012B46; margin:0 0 18px 0; line-height:1.25;">
+            Invoice with<br>Stock Validation
+        </h2>
+        <p style="font-size:17px; color:#585858; line-height:1.7; max-width:720px; margin:0 auto 14px;">
+            Keep accounting and inventory aligned by  creating and validating stock pickings directly from invoicing workflows.
+        </p>
+        <p style="font-size:17px; color:#585858; line-height:1.7; max-width:720px; margin:0 auto 14px;">
+            This module fills the stock gap in direct invoicing. Customer invoices trigger deliveries, vendor bills create receipts, and refunds generate reverse stock movements without manual inventory steps.
+        </p>
+        <p style="font-size:13px; color:#6D6D6D; margin:0 0 24px 0;">
+            Seamless integration with Odoo Invoicing, Accounting, and Inventory.
+        </p>
+        <a href="https://www.codetrade.io" style="display:inline-block; padding:12px 44px; background:linear-gradient(90deg,#004B97 0%,#0A1B2C 100%); color:#fff; text-decoration:none; border-radius:8px; font-size:15px; font-weight:600; box-shadow:0 4px 14px rgba(0,75,151,.25);">View Demo</a>
+    </section>
+
+    <section class="oe_container" style="margin-bottom:20px;">
+        <ul role="tablist" class="nav nav-tabs justify-content-center" style="border:none; background:transparent; padding:0; margin-bottom:0; gap:8px;">
+            <li class="nav-item" style="border-top-right-radius:10px; border-top-left-radius:10px; margin-right:4px;">
+                <a href="#tab_features" data-bs-toggle="tab" class="nav-link ct-tab-link active show"
+                    style="font-size:13px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:11px 26px; border-radius:10px; border:1px solid #E5E7EB; text-decoration:none;">
+                    Features
+                </a>
+            </li>
+            <li class="nav-item" style="border-top-right-radius:10px; border-top-left-radius:10px; margin-right:4px;">
+                <a href="#tab_releasenote" data-bs-toggle="tab" class="nav-link ct-tab-link"
+                    style="font-size:13px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:11px 26px; border-radius:10px; border:1px solid #E5E7EB; text-decoration:none;">
+                    Release Note
+                </a>
+            </li>
+            <li class="nav-item" style="border-top-right-radius:10px; border-top-left-radius:10px;">
+                <a href="#tab_faq" data-bs-toggle="tab" class="nav-link ct-tab-link"
+                    style="font-size:13px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; padding:11px 26px; border-radius:10px; border:1px solid #E5E7EB; text-decoration:none;">
+                    FAQ's
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content" style="border:2px solid #E8EEF4; border-radius:0 0 14px 14px; background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.04);">
+            <div class="tab-pane active show" id="tab_features" style="padding:40px;">
+                <div class="text-center mb-4">
+                    <h2 style="font-size:28px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Creates stock moves from invoice validation.</h2>
+                    <p style="color:#64748b; font-size:15px; margin:0;">Install the module and let Odoo create the right delivery, receipt, or return.</p>
+                </div>
+
+                <h3 style="font-size:22px; font-weight:700; color:#012B46; margin:0 0 20px 0; text-align:center;">Key Features</h3>
+
+                <div style="border:1px solid #E8EEF4; border-radius:10px; padding:20px 24px; margin-bottom:14px; background:#fff;">
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+                        <div style="width:42px; height:42px; background:#004B97; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:20px; font-weight:700; line-height:1;">&#8599;</div>
+                        <h5 style="font-size:16px; font-weight:700; color:#012B46; margin:0;">Customer Invoice Delivery</h5>
+                    </div>
+                    <hr style="border:none; border-top:1px solid #F1F5F9; margin:0 0 12px 0;">
+                    <p style="color:#64748b; font-size:14px; margin:0; line-height:1.7;">Validating a direct customer invoice creates an outgoing delivery order and validates it. when stock is available.</p>
+                </div>
+
+                <div style="border:1px solid #E8EEF4; border-radius:10px; padding:20px 24px; margin-bottom:14px; background:#fff;">
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+                        <div style="width:42px; height:42px; background:#004B97; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:20px; font-weight:700; line-height:1;">&#8595;</div>
+                        <h5 style="font-size:16px; font-weight:700; color:#012B46; margin:0;">Vendor Bill Receipt</h5>
+                    </div>
+                    <hr style="border:none; border-top:1px solid #F1F5F9; margin:0 0 12px 0;">
+                    <p style="color:#64748b; font-size:14px; margin:0; line-height:1.7;">Vendor bills generate incoming receipts so purchased products are added into stock without separate warehouse processing.</p>
+                </div>
+
+                <div style="border:1px solid #E8EEF4; border-radius:10px; padding:20px 24px; margin-bottom:14px; background:#fff;">
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+                        <div style="width:42px; height:42px; background:#004B97; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:20px; font-weight:700; line-height:1;">&#8646;</div>
+                        <h5 style="font-size:16px; font-weight:700; color:#012B46; margin:0;">Credit Notes and Refunds</h5>
+                    </div>
+                    <hr style="border:none; border-top:1px solid #F1F5F9; margin:0 0 12px 0;">
+                    <p style="color:#64748b; font-size:14px; margin:0; line-height:1.7;">Customer credit notes and vendor refunds create the corresponding reverse stock movements to keep quantities accurate.</p>
+                </div>
+
+                <div style="border:1px solid #E8EEF4; border-radius:10px; padding:20px 24px; margin-bottom:14px; background:#fff;">
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+                        <div style="width:42px; height:42px; background:#004B97; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:20px; font-weight:700; line-height:1;">&#10003;</div>
+                        <h5 style="font-size:16px; font-weight:700; color:#012B46; margin:0;">No Duplicate Stock Operations</h5>
+                    </div>
+                    <hr style="border:none; border-top:1px solid #F1F5F9; margin:0 0 12px 0;">
+                    <p style="color:#64748b; font-size:14px; margin:0; line-height:1.7;">The workflow avoids creating duplicate pickings for invoices already linked to sales or purchase operations.</p>
+                </div>
+
+                <div style="border:1px solid #E8EEF4; border-radius:10px; padding:20px 24px; margin-bottom:36px; background:#fff;">
+                    <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+                        <div style="width:42px; height:42px; background:#004B97; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:20px; font-weight:700; line-height:1;">&#9881;</div>
+                        <h5 style="font-size:16px; font-weight:700; color:#012B46; margin:0;">Native Odoo Experience</h5>
+                    </div>
+                    <hr style="border:none; border-top:1px solid #F1F5F9; margin:0 0 12px 0;">
+                    <p style="color:#64748b; font-size:14px; margin:0; line-height:1.7;">The module works inside standard invoicing and inventory flows, keeping the user experience simple and predictable.</p>
+                </div>
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Customer Invoice Delivery</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;">Open other info tab in invoice to see the delivery preparation. Make sure auto-picking is enabled. and select warehouse and picking type. if auto-picking not enabled delivery will not be created.</p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./auto_picking.png" alt="Customer Invoice  Delivery" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Customer Invoice Delivery</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;">Outgoing delivery is prepared directly from a validated customer invoice.</p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./invoice_auto_delivery.png" alt="Customer Invoice  Delivery" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Vendor Bill  Delivery</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;"> Same as above, but for vendor invoices. Open other info tab in vendor bill to see the delivery preparation. Make sure auto-picking is enabled. and select warehouse and picking type. if auto-picking not enabled delivery will not be created. </p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./vendor_other_info.png" alt="Vendor Invoice  Delivery" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Vendor Bill  Receipt</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;">Incoming receipt is created  from vendor billing.</p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./vendor_bill_auto_delivery.png" alt="Vendor Bill  Receipt" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;"> Delivery Validation</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;">Once the invoice-driven delivery is created, the transfer is validated . Users do not need to open the Delivery order and confirm it manually, which removes an extra warehouse step and keeps stock updated instantly.</p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./delivery_validation.png" alt="Delivery Validation" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Customer Credit Note Return</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;">Refunding a customer invoice generates the reverse stock move back into inventory.</p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./credit_note_auto_delivery.png" alt="Customer Credit Note Return" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+                <div style="margin-bottom:36px;">
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Vendor Bill  Delivery</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;"> Same as above, but for vendor invoices Refund. Open other info tab in vendor bill to see the delivery preparation. Make sure auto-picking is enabled. and select warehouse and picking type. if auto-picking not enabled delivery will not be created. </p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./vendor_auto.png" alt="Vendor Invoice  Delivery" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size:20px; font-weight:700; color:#012B46; margin:0 0 8px 0;">Vendor Refund Return</h3>
+                    <p style="color:#64748b; font-size:14px; margin:0 0 14px 0;">Vendor refunds create the matching outbound stock return to keep quantities aligned.</p>
+                    <div style="background:#F8FAFC; padding:6px; border:1px solid #E2E8F0; border-radius:10px;">
+                        <img src="./vendor_credit_note_auto_delivery.png" alt="Vendor Refund Return" style="width:100%; border-radius:6px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab_releasenote" style="padding:40px; text-align:center;">
+                <h6 style="font-size:20px; color:#012B46; margin:0 0 8px 0; font-weight:600;">
+                    Version 1.0 :
+                    <span style="background:#EBF4FF; color:#004B97; border-radius:6px; padding:4px 14px; font-size:16px; font-weight:700; margin-left:8px;">18.0.0.0.0</span>
+                </h6>
+                <p style="color:#64748b; font-size:15px; margin:0;">11 March 2026</p>
+            </div>
+
+            <div class="tab-pane" id="tab_faq" style="padding:30px 40px;">
+                <div class="panel-group" id="faqAccordion" role="tablist">
+                    <div style="border:1px solid #E8EEF4; border-radius:10px; margin-bottom:12px; overflow:hidden;">
+                        <div style="background:#fff;">
+                            <h6 style="margin:0;">
+                                <a data-bs-toggle="collapse" href="#faq1" class="collapsed"
+                                    style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; color:#012B46; font-weight:600; font-size:15px; text-decoration:none;">
+                                    <span>Can I use this module with Odoo Online?</span>
+                                    <span style="font-size:18px; color:#94a3b8; flex-shrink:0;">&#8964;</span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="faq1" class="panel-collapse collapse">
+                            <div style="background:#F8FAFC; padding:14px 20px; border-top:1px solid #E8EEF4;">
+                                <p style="margin:0; color:#64748b; font-size:14px; line-height:1.7;">This app is intended for self-hosted Odoo environments and is not available for Odoo Online.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border:1px solid #E8EEF4; border-radius:10px; margin-bottom:12px; overflow:hidden;">
+                        <div style="background:#fff;">
+                            <h6 style="margin:0;">
+                                <a data-bs-toggle="collapse" href="#faq2" class="collapsed"
+                                    style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; color:#012B46; font-weight:600; font-size:15px; text-decoration:none;">
+                                    <span>What invoice types are supported?</span>
+                                    <span style="font-size:18px; color:#94a3b8; flex-shrink:0;">&#8964;</span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="faq2" class="panel-collapse collapse">
+                            <div style="background:#F8FAFC; padding:14px 20px; border-top:1px solid #E8EEF4;">
+                                <p style="margin:0; color:#64748b; font-size:14px; line-height:1.7;">Customer invoices, vendor bills, customer credit notes, and vendor refunds are supported for  stock movement handling.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border:1px solid #E8EEF4; border-radius:10px; margin-bottom:12px; overflow:hidden;">
+                        <div style="background:#fff;">
+                            <h6 style="margin:0;">
+                                <a data-bs-toggle="collapse" href="#faq3" class="collapsed"
+                                    style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; color:#012B46; font-weight:600; font-size:15px; text-decoration:none;">
+                                    <span>Will it create duplicate pickings for sales orders or purchase orders?</span>
+                                    <span style="font-size:18px; color:#94a3b8; flex-shrink:0;">&#8964;</span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="faq3" class="panel-collapse collapse">
+                            <div style="background:#F8FAFC; padding:14px 20px; border-top:1px solid #E8EEF4;">
+                                <p style="margin:0; color:#64748b; font-size:14px; line-height:1.7;">No. The module is designed for direct invoicing flows and avoids duplicating stock operations that already originate from standard sales or purchase documents.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border:1px solid #E8EEF4; border-radius:10px; margin-bottom:12px; overflow:hidden;">
+                        <div style="background:#fff;">
+                            <h6 style="margin:0;">
+                                <a data-bs-toggle="collapse" href="#faq4" class="collapsed"
+                                    style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; color:#012B46; font-weight:600; font-size:15px; text-decoration:none;">
+                                    <span>How can I install the module?</span>
+                                    <span style="font-size:18px; color:#94a3b8; flex-shrink:0;">&#8964;</span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="faq4" class="panel-collapse collapse">
+                            <div style="background:#F8FAFC; padding:14px 20px; border-top:1px solid #E8EEF4;">
+                                <p style="margin:0; color:#64748b; font-size:14px; line-height:1.7;">Place the module in your addons path, restart Odoo, update the apps list, and install it from the Apps menu.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border:1px solid #E8EEF4; border-radius:10px; margin-bottom:12px; overflow:hidden;">
+                        <div style="background:#fff;">
+                            <h6 style="margin:0;">
+                                <a data-bs-toggle="collapse" href="#faq5" class="collapsed"
+                                    style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; color:#012B46; font-weight:600; font-size:15px; text-decoration:none;">
+                                    <span>How do I get support if I need help?</span>
+                                    <span style="font-size:18px; color:#94a3b8; flex-shrink:0;">&#8964;</span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="faq5" class="panel-collapse collapse">
+                            <div style="background:#F8FAFC; padding:14px 20px; border-top:1px solid #E8EEF4;">
+                                <p style="margin:0; color:#64748b; font-size:14px; line-height:1.7;">Contact us at <a href="mailto:support@codetrade.io" style="color:#004B97; font-weight:600; text-decoration:none;">support@codetrade.io</a> and we will help within the support window.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container" style="padding:2px; background:linear-gradient(180deg,#FFFFFF -10%,#004B97 100%); border-radius:14px; margin-bottom:20px;">
+        <div style="background:#FDFDFD; border-radius:14px; padding:36px 44px; display:flex; align-items:center; justify-content:space-between; gap:30px; overflow:hidden;">
+            <div style="max-width:460px;">
+                <div style="font-size:26px; font-weight:500; color:#012B46; font-style:italic;">
+                    Get Support, For Free!
+                    <div style="height:3px; background:#004B97; width:210px; border-radius:2px; margin-top:4px;"></div>
+                </div>
+                <h2 style="color:#1f2937; margin:14px 0 22px; font-size:34px; font-weight:700;">60 Days Free Support</h2>
+                <div style="display:flex; align-items:center; gap:14px;">
+                    <img src="./mail-icon.svg" alt="mail" style="width:40px; height:40px;">
+                    <div>
+                        <span style="display:block; font-size:13px; color:#64748b;">Mail us</span>
+                        <a href="mailto:support@codetrade.io" style="font-size:19px; font-weight:700; color:#0F172B; text-decoration:none;">support@codetrade.io</a>
+                    </div>
+                </div>
+            </div>
+            <div style="flex-shrink:0;">
+                <img src="./support.gif" alt="Support" style="max-width:340px; width:100%;">
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container" style="background:linear-gradient(257deg,rgba(252,252,254,.6) 3%,rgba(226,240,255,.6) 95%); border-radius:12px; border:2px solid #E0E8F0; padding:44px 24px; text-align:center; margin-bottom:20px; position:relative; overflow:hidden;">
+        <img src="./world-map.png" alt="" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:.08; pointer-events:none; border-radius:12px;">
+        <h2 style="font-size:34px; font-weight:700; color:#1e293b; margin:0 0 30px 0; position:relative;">Language Translation</h2>
+        <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; position:relative;">
+            <div style="display:flex; align-items:center; gap:10px; background:#fff; padding:8px 20px 8px 8px; border-radius:50px; border:1px solid #DDE5EE; box-shadow:0 3px 10px rgba(0,0,0,.07);">
+                <div style="width:44px; height:44px; border-radius:50%; border:3px solid #EAF2FF; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#fff; font-size:24px; line-height:1;">
+                    <span aria-hidden="true">🇺🇸</span>
+                </div>
+                <span style="font-weight:600; font-size:15px; color:#1e293b;">English</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="oe_container" style="text-align:center; margin-bottom:20px;">
+        <h2 style="font-size:34px; font-weight:700; color:#1e293b; margin:0 0 22px 0;">Our Services</h2>
+        <img src="./os-info.png" alt="Odoo Services" style="width:100%; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,.06);">
+    </section>
+
+</body>
+
+</html>
